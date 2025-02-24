@@ -5,6 +5,12 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaekwondoCompetition.API", "TaekwondoCompetition.API\TaekwondoCompetition.API.csproj", "{99C5BBAA-D198-4989-B04F-8C934EB62E6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaekwondoCompetition.Persistence", "TaekwondoCompetition.Persistence\TaekwondoCompetition.Persistence.csproj", "{01F0DE27-2DB1-46F6-A91D-81250C66F14D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaekwondoCompetition.Core", "TaekwondoCompetition.Core\TaekwondoCompetition.Core.csproj", "{35D34673-7333-4C64-B8DE-268BCD09D991}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaekwondoCompetition.Aplication", "TaekwondoCompetition.Aplication\TaekwondoCompetition.Aplication.csproj", "{7446AFB6-B7B6-45B6-BD04-E5EB14C6453E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,17 @@ Global
 		{99C5BBAA-D198-4989-B04F-8C934EB62E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99C5BBAA-D198-4989-B04F-8C934EB62E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99C5BBAA-D198-4989-B04F-8C934EB62E6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01F0DE27-2DB1-46F6-A91D-81250C66F14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01F0DE27-2DB1-46F6-A91D-81250C66F14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01F0DE27-2DB1-46F6-A91D-81250C66F14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01F0DE27-2DB1-46F6-A91D-81250C66F14D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35D34673-7333-4C64-B8DE-268BCD09D991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D34673-7333-4C64-B8DE-268BCD09D991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D34673-7333-4C64-B8DE-268BCD09D991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D34673-7333-4C64-B8DE-268BCD09D991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7446AFB6-B7B6-45B6-BD04-E5EB14C6453E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7446AFB6-B7B6-45B6-BD04-E5EB14C6453E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7446AFB6-B7B6-45B6-BD04-E5EB14C6453E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7446AFB6-B7B6-45B6-BD04-E5EB14C6453E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
