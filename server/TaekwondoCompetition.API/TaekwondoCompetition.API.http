@@ -1,6 +1,24 @@
 @base = http://localhost:5085
 
-GET {{base}}/api/auth
+POST {{base}}/api/auth/login
 Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "dima",
+    "password": "123456"
+}
 
 ###
+POST {{base}}/api/auth/register
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "dima",
+    "password": "123456",
+    "firstName": "Dima",
+    "lastName": "Kovalenko",
+    "sex": 0,
+    "birthDate": "1995-01-01"
+}

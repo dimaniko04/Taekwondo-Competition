@@ -1,6 +1,6 @@
 namespace TaekwondoCompetition.Core.Enums;
 
-enum Sex
+public enum Sex
 {
     M, F,
 }

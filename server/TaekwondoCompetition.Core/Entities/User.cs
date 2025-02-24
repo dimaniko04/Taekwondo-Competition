@@ -2,7 +2,7 @@ using TaekwondoCompetition.Core.Entities.Common;
 
 namespace TaekwondoCompetition.Core.Entities;
 
-class User : BaseEntity
+public class User : BaseEntity
 {
     public string Email { get; set; } = null!;
     public string Password { get; set; } = null!;

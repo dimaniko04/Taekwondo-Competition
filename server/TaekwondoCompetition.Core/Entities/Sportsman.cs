@@ -3,7 +3,7 @@ using TaekwondoCompetition.Core.Enums;
 
 namespace TaekwondoCompetition.Core.Entities;
 
-class Sportsman : BaseEntity
+public class Sportsman : BaseEntity
 {
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;

@@ -1,6 +1,6 @@
 namespace TaekwondoCompetition.Core.Entities;
 
-class Competitor
+public class Competitor
 {
     public int SportsmanId { get; set; }
     public int CompetitionId { get; set; }

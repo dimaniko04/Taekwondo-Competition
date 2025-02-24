@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TaekwondoCompetition.Application.Requests;
 
 namespace TaekwondoCompetition.API.Controllers;
 
@@ -6,9 +7,15 @@ namespace TaekwondoCompetition.API.Controllers;
 [Route("api/auth")]
 public class AuthController : ControllerBase
 {
-    [HttpGet]
-    public IActionResult Test()
+    [HttpPost("login")]
+    public IActionResult Login([FromBody] LoginRequest request)
     {
-        return Ok("Test");
+        return Ok(request);
+    }
+
+    [HttpPost("register")]
+    public IActionResult Register([FromBody] RegisterRequest request)
+    {
+        return Ok(request);
     }
 }
