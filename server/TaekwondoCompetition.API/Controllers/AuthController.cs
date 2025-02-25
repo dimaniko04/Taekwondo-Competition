@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TaekwondoCompetition.Application.Interfaces.Services;
 using TaekwondoCompetition.Application.Requests;
 
 namespace TaekwondoCompetition.API.Controllers;
@@ -7,15 +8,26 @@ namespace TaekwondoCompetition.API.Controllers;
 [Route("api/auth")]
 public class AuthController : ControllerBase
 {
-    [HttpPost("login")]
-    public IActionResult Login([FromBody] LoginRequest request)
+    private readonly IAuthenticationService _authenticationService;
+
+    public AuthController(IAuthenticationService authenticationService)
     {
-        return Ok(request);
+        this._authenticationService = authenticationService;
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginRequest request)
+    {
+        var authResponse = await _authenticationService.LoginAsync(request);
+
+        return Ok(authResponse);
     }
 
     [HttpPost("register")]
-    public IActionResult Register([FromBody] RegisterRequest request)
+    public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
-        return Ok(request);
+        var authResponse = await _authenticationService.RegisterAsync(request);
+
+        return Ok(authResponse);
     }
 }

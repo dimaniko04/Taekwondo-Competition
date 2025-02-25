@@ -1,19 +1,17 @@
+using TaekwondoCompetition.API.Extensions;
+
+const string CORS_POLICY = "CorsPolicy";
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-    });
-});
+builder.Services
+    .AddSwagger()
+    .AddCorsPolicy(CORS_POLICY)
+    .AddPresentationLayer()
+    .AddApplicationLayer()
+    .AddPersistenceLayer();
 
 var app = builder.Build();
 
@@ -22,7 +20,7 @@ app.UseSwaggerUI();
 
 //app.UseHttpsRedirection();
 
-app.UseCors();
+app.UseCors(CORS_POLICY);
 
 app.MapControllers();
 

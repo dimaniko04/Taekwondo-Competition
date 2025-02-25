@@ -1,5 +1,6 @@
 .env
 .vs
+.vscode
 *.log
 
 # .NET Core 

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaekwondoCompetition.Persis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaekwondoCompetition.Core", "TaekwondoCompetition.Core\TaekwondoCompetition.Core.csproj", "{35D34673-7333-4C64-B8DE-268BCD09D991}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaekwondoCompetition.Aplication", "TaekwondoCompetition.Aplication\TaekwondoCompetition.Aplication.csproj", "{7446AFB6-B7B6-45B6-BD04-E5EB14C6453E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaekwondoCompetition.Application", "TaekwondoCompetition.Application\TaekwondoCompetition.Application.csproj", "{7446AFB6-B7B6-45B6-BD04-E5EB14C6453E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
