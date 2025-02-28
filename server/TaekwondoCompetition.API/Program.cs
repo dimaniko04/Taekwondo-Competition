@@ -11,7 +11,7 @@ builder.Services
     .AddCorsPolicy(CORS_POLICY)
     .AddPresentationLayer()
     .AddApplicationLayer()
-    .AddPersistenceLayer();
+    .AddPersistenceLayer(builder.Configuration);
 
 var app = builder.Build();
 

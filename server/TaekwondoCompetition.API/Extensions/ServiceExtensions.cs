@@ -4,6 +4,7 @@ using TaekwondoCompetition.Persistence.Services;
 using TaekwondoCompetition.Application.Services;
 using TaekwondoCompetition.Application.Interfaces.Services;
 using TaekwondoCompetition.Application.Interfaces.Persistence.Services;
+using TaekwondoCompetition.Persistence.Services.Authentication;
 
 namespace TaekwondoCompetition.API.Extensions;
 
@@ -39,11 +40,19 @@ public static class ServiceExtensions
         return services;
     }
 
-    public static void AddPersistenceLayer(this IServiceCollection services)
+    public static void AddPersistenceLayer(
+        this IServiceCollection services,
+        IConfiguration configuration)
     {
+        services.Configure<JwtSettings>(
+            configuration.GetSection(JwtSettings.SectionName));
+
         services.AddSingleton<ITokenProvider, TokenProvider>();
+        services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         services.AddScoped<IPasswordHelper, PasswordHelper>();
+
         services.AddScoped<IAuthenticationManager, AuthenticationManager>();
     }
 
