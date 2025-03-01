@@ -3,6 +3,8 @@ using TaekwondoCompetition.Application.Interfaces.Services;
 using TaekwondoCompetition.Application.Requests;
 using TaekwondoCompetition.Application.Responses;
 using TaekwondoCompetition.Core.Entities;
+using TaekwondoCompetition.Core.Errors;
+using TaekwondoCompetition.Core.Result;
 
 namespace TaekwondoCompetition.Application.Services;
 
@@ -22,23 +24,24 @@ public class AuthenticationService : IAuthenticationService
         this._tokenProvider = tokenProvider;
     }
 
-    public async Task<AuthResponse> LoginAsync(LoginRequest request)
+    public async Task<Result<AuthResponse>> LoginAsync(LoginRequest request)
     {
         var user = await _authenticationManager.GetByEmailAsync(request.Email);
 
         if (user == null)
         {
-            throw new NotImplementedException("User not found");
+            return Result<AuthResponse>
+                .Failure(Errors.Authentication.UserNotFound);
         }
 
         if (!_passwordHasher.VerifyPassword(user, user.Password, request.Password))
         {
-            throw new NotImplementedException("Invalid password");
+            return Result<AuthResponse>
+                .Failure(Errors.Authentication.InvalidCredentials);
         }
 
         var token = _tokenProvider.GenerateToken(user);
-
-        return new AuthResponse(
+        var authResponse = new AuthResponse(
             token,
             new UserResponse(
                 user.Id,
@@ -46,9 +49,11 @@ public class AuthenticationService : IAuthenticationService
                 user.Role.Name
             )
         );
+
+        return Result<AuthResponse>.Success(authResponse);
     }
 
-    public async Task<AuthResponse> RegisterAsync(RegisterRequest request)
+    public async Task<Result<AuthResponse>> RegisterAsync(RegisterRequest request)
     {
         var user = new User
         {
@@ -59,8 +64,7 @@ public class AuthenticationService : IAuthenticationService
         await _authenticationManager.AssignRoleAsync(user, "User");
 
         var token = _tokenProvider.GenerateToken(user);
-
-        return new AuthResponse(
+        var authResponse = new AuthResponse(
             token,
             new UserResponse(
                 user.Id,
@@ -68,5 +72,7 @@ public class AuthenticationService : IAuthenticationService
                 user.Role.Name
             )
         );
+
+        return Result<AuthResponse>.Success(authResponse);
     }
 }

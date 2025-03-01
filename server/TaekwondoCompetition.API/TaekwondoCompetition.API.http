@@ -22,3 +22,9 @@ Content-Type: application/json
     "sex": 0,
     "birthDate": "1995-01-01"
 }
+
+###
+GET {{base}}/api/auth/test
+Accept: application/json
+
+###

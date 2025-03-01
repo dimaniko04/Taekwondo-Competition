@@ -5,6 +5,7 @@ using TaekwondoCompetition.Application.Services;
 using TaekwondoCompetition.Application.Interfaces.Services;
 using TaekwondoCompetition.Application.Interfaces.Persistence.Services;
 using TaekwondoCompetition.Persistence.Services.Authentication;
+using TaekwondoCompetition.API.Middlewares;
 
 namespace TaekwondoCompetition.API.Extensions;
 
@@ -13,6 +14,8 @@ public static class ServiceExtensions
     public static IServiceCollection AddPresentationLayer(this IServiceCollection services)
     {
         services.AddControllers();
+        services.AddExceptionHandler<GlobalExceptionHandler>();
+        services.AddProblemDetails();
 
         return services;
     }

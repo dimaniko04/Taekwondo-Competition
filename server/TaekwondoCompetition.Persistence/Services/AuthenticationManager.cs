@@ -29,9 +29,15 @@ public class AuthenticationManager : IAuthenticationManager
         user.Role = role;
     }
 
-    public async Task<User> GetByEmailAsync(string email)
+    public async Task<User?> GetByEmailAsync(string email)
     {
         await Task.CompletedTask;
+
+        if (email == "")
+        {
+            return null;
+        }
+
         var user = new User
         {
             Email = email,
