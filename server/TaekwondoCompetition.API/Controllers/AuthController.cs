@@ -1,4 +1,6 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using TaekwondoCompetition.API.ActionFilters;
 using TaekwondoCompetition.API.Extensions;
 using TaekwondoCompetition.Application.Interfaces.Services;
 using TaekwondoCompetition.Application.Requests;
@@ -19,6 +21,7 @@ public class AuthController : AppController
     }
 
     [HttpPost("login")]
+    [ServiceFilter(typeof(ValidationResultFilter))]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         var result = await _authenticationService.LoginAsync(request);
@@ -29,7 +32,10 @@ public class AuthController : AppController
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+    [ServiceFilter(typeof(ValidationResultFilter))]
+    public async Task<IActionResult> Register(
+        [FromBody] RegisterRequest request,
+        [FromServices] IValidator<RegisterRequest> validator)
     {
         var result = await _authenticationService.RegisterAsync(request);
 

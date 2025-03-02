@@ -6,6 +6,9 @@ using TaekwondoCompetition.Application.Interfaces.Services;
 using TaekwondoCompetition.Application.Interfaces.Persistence.Services;
 using TaekwondoCompetition.Persistence.Services.Authentication;
 using TaekwondoCompetition.API.Middlewares;
+using FluentValidation;
+using TaekwondoCompetition.Application;
+using TaekwondoCompetition.API.ActionFilters;
 
 namespace TaekwondoCompetition.API.Extensions;
 
@@ -16,6 +19,8 @@ public static class ServiceExtensions
         services.AddControllers();
         services.AddExceptionHandler<GlobalExceptionHandler>();
         services.AddProblemDetails();
+
+        services.AddScoped<ValidationResultFilter>();
 
         return services;
     }
@@ -62,6 +67,10 @@ public static class ServiceExtensions
     public static IServiceCollection AddApplicationLayer(this IServiceCollection services)
     {
         services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+        services.AddValidatorsFromAssembly(
+            typeof(IAssemblyMarker).Assembly,
+            includeInternalTypes: true);
 
         return services;
     }
